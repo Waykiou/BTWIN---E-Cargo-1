@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTWIN e-Cargo R500E - Le Nouveau Véhicule Familial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0082C3;
+            --secondary-blue: #29a0dc;
+            --dark-text: #1d1d1d;
+            --light-text: #666666;
+            --bg-light: #f4f6f8;
+            --white: #ffffff;
+            --accent-yellow: #FFEA28;
+            --family-warmth: #e67e22; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html { scroll-behavior: smooth; } /* Défilement fluide pour l'ancre */
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 50px; 
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+            box-shadow: 0 4px 15px rgba(255, 234, 40, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 234, 40, 0.5);
+            background-color: #ffd900;
+        }
+
+        /* --- STICKY CTA BUTTON --- */
+        .sticky-cta {
+            position: fixed;
+            top: 25px;
+            right: 30px; /* Décalé plus à droite comme demandé */
+            z-index: 1000;
+            padding: 12px 25px;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Ombre plus forte pour visibilité sur tout fond */
+            border: 2px solid rgba(255,255,255,0.2); /* Petit contour pour contraste sur fond sombre */
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 20px 0;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            background: transparent;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .menu { display: flex; gap: 30px; margin-left: 50px; /* Décalage pour laisser place au logo */ }
+
+        .menu a {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* --- SECTION 1: HERO --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #005f8f 100%);
+            position: relative;
+            height: 90vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: auto;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+            mask-image: linear-gradient(to right, transparent 0%, black 20%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            z-index: 2; 
+            position: relative;
+        }
+
+        .hero-text {
+            width: 55%;
+            color: var(--white);
+            padding-left: 0;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: var(--accent-yellow);
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+        
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: #f0f0f0;
+            max-width: 580px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero p strong { color: white; font-weight: 600; }
+
+        /* --- SECTION CONVERSION (Formulaire remonté) --- */
+        .conversion-section { 
+            background: linear-gradient(rgba(0, 56, 83, 0.9), rgba(0, 56, 83, 0.9)), url('visuel_btwin.png');
+            background-size: cover; background-position: center;
+            padding: 90px 0; color: white; 
+        }
+        .conversion-content { 
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; 
+            max-width: 1100px; margin: 0 auto;
+        }
+        .lead-magnet-text h3 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; color: var(--accent-yellow); line-height: 1.1; }
+        .lead-magnet-text p { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; opacity: 0.9; }
+        .check-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-size: 1.1rem; font-weight: 500; }
+        .check-list li i { color: #2ecc71; background: white; border-radius: 50%; padding: 3px; font-size: 0.9rem; }
+        
+        .conversion-form { 
+            background: var(--white); padding: 40px 30px; border-radius: 12px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .form-header { color: var(--dark-text); text-align: center; margin-bottom: 25px; font-weight: 800; font-size: 1.1rem; line-height: 1.4; }
+        .form-header span { color: var(--primary-blue); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 6px; font-family: inherit; font-weight: 500; transition: 0.3s; }
+        .form-group input:focus { border-color: var(--primary-blue); outline: none; }
+        .form-btn { width: 100%; border-radius: 6px; padding: 18px; font-size: 1rem; margin-top: 10px; }
+        .spam-text { font-size: 0.75rem; color: #888; text-align: center; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+
+        /* --- SECTION 2: BÉNÉFICES --- */
+        .features-section { padding: 90px 0; background: var(--white); }
+        .features-container { display: grid; grid-template-columns: 1fr 1.6fr 1fr; align-items: center; gap: 40px; }
+        .feature-col { display: flex; flex-direction: column; gap: 50px; }
+        .feature-item { position: relative; text-align: right; }
+        .feature-col:last-child .feature-item { text-align: left; }
+
+
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: #eef7fb;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon { font-size: 1.5rem; color: var(--primary-blue); }
+
+
+        .feature-content h3 { font-size: 1.1rem; text-transform: uppercase; margin-bottom: 8px; font-weight: 800; color: var(--dark-text); }
+        .feature-content p { font-size: 0.95rem; color: var(--light-text); line-height: 1.5; }
+
+
+        /* --- CARROUSEL --- */
+        .carousel-container {
+            position: relative; width: 100%; border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); overflow: hidden;
+            background: white; padding: 10px;
+        }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        .carousel-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; }
+        .carousel-slide img { width: 100%; height: auto; display: block; object-fit: contain; max-height: 450px; }
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: white; color: var(--dark-text); border: none;
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
+            z-index: 10; display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+        }
+        .carousel-btn:hover { background: var(--primary-blue); color: white; }
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+        .carousel-dots {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .dot { width: 8px; height: 8px; background: #ddd; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--primary-blue); width: 25px; border-radius: 10px; }
+
+
+        /* --- SECTION 3: PREUVE SOCIALE --- */
+        .trust-section { padding: 80px 0; background-color: var(--bg-light); }
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; color: var(--dark-text); margin-bottom: 15px; }
+        .section-header p { color: var(--light-text); font-size: 1.1rem; }
+
+
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 70px; }
+        .testimonial-card { 
+            background: var(--white); padding: 35px 30px; border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); text-align: left;
+            border-top: 4px solid var(--primary-blue);
+        }
+        .stars { color: #FFC107; margin-bottom: 20px; font-size: 0.9rem; }
+        .quote { font-style: italic; color: #555; margin-bottom: 25px; font-size: 1rem; line-height: 1.6; }
+        .author { display: flex; align-items: center; gap: 15px; }
+        .author-avatar { width: 50px; height: 50px; background: #eef7fb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-blue); font-size: 1.2rem; }
+        .author-info strong { display: block; font-size: 1rem; color: var(--dark-text); font-weight: 700; }
+        .author-info span { font-size: 0.85rem; color: #888; }
+
+
+        .trust-badges { 
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: center; 
+            background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .badge-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .badge-item i { font-size: 1.8rem; color: var(--primary-blue); }
+        .badge-item h5 { font-weight: 700; font-size: 0.9rem; margin: 0; }
+        
+        .faq-section { padding-top: 60px; }
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .faq-item { background: white; padding: 25px; border-radius: 8px; border-left: 3px solid var(--accent-yellow); }
+        .faq-item h4 { font-weight: 700; margin-bottom: 10px; color: var(--dark-text); display: flex; align-items: center; gap: 10px; }
+        .faq-item h4 i { color: var(--light-text); font-size: 0.9rem; }
+        .faq-item p { font-size: 0.95rem; color: var(--light-text); margin: 0; }
+
+
+        /* --- FOOTER --- */
+        footer { background-color: #1a1a1a; color: #888; padding: 70px 0 30px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: white; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; font-weight: 700; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #333; }
+        
+        /* Mobile */
+        @media (max-width: 900px) {
+            .hero { padding-top: 120px; height: auto; text-align: center; padding-bottom: 60px; }
+            .hero-bg-img { display: none; }
+            .hero-text { width: 100%; padding: 0 10px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-tag { margin-top: 20px; }
+            
+            .features-container, .products-grid, .stats-grid, .conversion-content, .footer-grid, .testimonials-grid, .faq-grid, .trust-badges {
+                grid-template-columns: 1fr; gap: 40px;
+            }
+            .feature-col, .feature-item, .feature-col:last-child .feature-item { text-align: center; align-items: center; }
+            .feature-icon-wrapper { margin: 0 auto 15px; }
+            .carousel-container { margin: 20px 0; order: -1; }
+            .trust-badges { gap: 30px; padding: 30px 20px; }
+            .conversion-form { padding: 30px 20px; }
+
+            /* Bouton Sticky Mobile : En bas de l'écran */
+            .sticky-cta {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                left: 20px; /* Prend la largeur */
+                text-align: center;
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOUTON STICKY (Fixe au défilement) -->
+    <a href="#formulaire-essai" class="btn btn-primary sticky-cta">Réserver mon essai</a>
+
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">BTWIN <span style="font-size:0.7em; font-weight:300;">e-CARGO</span></div>
+            <div class="menu">
+                <a href="#section_features">Le Vélo</a>
+                <a href="#section_trust">Avis Parents</a>
+                <a href="#formulaire-essai">Essai Gratuit</a>
+            </div>
+            <!-- L'ancien CTA de la nav est retiré pour éviter les doublons avec le sticky -->
+            <div style="width: 150px;"></div> 
+        </div>
+    </nav>
+
+
+    <!-- SECTION 1: HERO -->
+    <header class="hero">
+        <img src="visuel_btwin.png" alt="Famille vélo cargo" class="hero-bg-img" onerror="this.src='https://contents.mediadecathlon.com/p2154674/k$c424687258320498b8c8d8b84930d66c/velo-cargo-electrique-longtail-chargement-arriere-r500e.jpg?format=auto&quality=90&f=1600x0'">
+        
+        <div class="container hero-content">
+            <div class="hero-text">
+                <br>
+                <br>
+                <span class="hero-tag">Nouveauté Famille 2026</span><br>
+                <h1>BTWIN E-cargo, by Decathlon</h1>
+                <h2>La fin du stress de 8h du matin.</h2>
+<ul style="margin-bottom: 35px; color: #f0f0f0; font-size: 1.15rem; font-weight: 400; line-height: 1.7;">
+    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--accent-yellow); margin-right:10px;"></i> Déposez les enfants à l'école, filez au travail <br>et faites les courses au retour.</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--accent-yellow); margin-right:10px;"></i> <strong>Zéro bouchon. Zéro essence. 100% Plaisir partagé.</strong></li>
+    <li><i class="fas fa-check" style="color:var(--accent-yellow); margin-right:10px;"></i> Le seul véhicule qui transforme le trajet scolaire en aventure.</li>
+</ul>
+                <div class="cta-group">
+                    <!-- Bouton Hero principal -->
+                    <a href="#formulaire-essai" class="btn btn-primary">Essayer avec mes enfants</a>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;"><i class="fas fa-check"></i> Essai gratuit sans engagement en magasin</p>
+                <a href="#video" class="btn btn-outline" style="margin-left: 15px;"><i class="fas fa-play" style="margin-right:8px; font-size:0.8em;"></i> Voir la vidéo</a>
+                
+            </div>
+        </div>
+    </header>
+
+
+    <!-- SECTION 2: CONVERSION (FORMULAIRE REMONTÉ + DOUBLE OFFRE) -->
+    <section class="conversion-section" id="formulaire-essai">
+        <div class="container conversion-content">
+            <div class="lead-magnet-text">
+                <h3>Essayez l'E-Cargo &<br>allégez votre facture</h3>
+                <p>Combinez l'utile à l'agréable : venez tester le BTWIN E-cargo gratuitement en famille et repartez avec notre guide des aides de l'État.</p>
+                <p><strong>Vos avantages immédiats :</strong></p>
+                <ul class="check-list">
+                    <li><i class="fas fa-bicycle"></i> 30 min d'essai offert en magasin</li>
+                    <li><i class="fas fa-file-pdf"></i> Guide des 2000€ d'aides (PDF)</li>
+                    <li><i class="fas fa-check"></i> Étude personnalisée de financement</li>
+                </ul>
+            </div>
+            
+            <div class="conversion-form">
+                <div class="form-header">Réserver l'essai gratuit<br><span>+ Recevez votre guide offert</span></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Votre Prénom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre Email" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <select style="width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 6px; font-family: inherit; color: #666;">
+                            <option>Code postal (pour trouver le magasin)</option>
+                            <!-- Options -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-btn">Je réserve mon <br>essai gratuit</button>
+                    <p class="spam-text"><i class="fas fa-lock"></i> Vos données restent confidentielles.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION 3: BÉNÉFICES -->
+    <section class="features-section" id="section_features">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2rem; font-weight: 900; text-transform: uppercase; color: var(--dark-text);">Pensé par des parents,<br>pour des parents</h2>
+                <p style="color: var(--light-text); font-size: 1.1rem; margin-top: 10px;">Tout a été conçu pour simplifier votre organisation familiale.</p>
+            </div>
+
+
+            <div class="features-container">
+                <!-- Colonne Gauche -->
+                <div class="feature-col">
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper"><i class="fas fa-child feature-icon"></i></div>
+                        <div class="feature-content">
+                            <h3>Sécurité "Monkey Bars"</h3>
+                            <p>Plus sûr qu'un porte-bébé classique. La structure métallique forme une véritable cage de protection autour de vos enfants.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper"><i class="fas fa-balance-scale feature-icon"></i></div>
+                        <div class="feature-content">
+                            <h3>Stabilité à toute épreuve</h3>
+                            <p>Centre de gravité bas et pneus larges : même avec 2 enfants qui bougent à l'arrière, vous restez parfaitement stable au feu rouge.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- CARROUSEL CENTRAL -->
+                <div class="carousel-container" id="productCarousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="imagesR500/velo-cargo-electrique-longtail-chargement-arriere-r500e-vert-clair.jpg" alt="Vue d'ensemble"></div>
+                        <div class="carousel-slide"><img src="imagesR500/velo-cargo-electrique-longtail-chargement-arriere-r500e-vert-clair-_4_.jpg" alt="Vue arrière"></div>
+                        <div class="carousel-slide"><img src="imagesR500/velo-cargo-electrique-longtail-chargement-arriere-r500e-vert-clair-_5_.jpg" alt="Cockpit guidon"></div>
+                        <div class="carousel-slide"><img src="imagesR500/velo-cargo-electrique-longtail-chargement-arriere-r500e-vert-clair-_6_.jpg" alt="Structure arrière"></div>
+                    </div>
+                    <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                </div>
+
+
+                <!-- Colonne Droite -->
+                <div class="feature-col">
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper"><i class="fas fa-shopping-bag feature-icon"></i></div>
+                        <div class="feature-content">
+                            <h3>Cartables + Courses + Kids</h3>
+                            <p>Ne choisissez plus. Avec 170kg de charge utile, vous emportez le sac de judo, les courses de la semaine et les deux enfants.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper"><i class="fas fa-leaf feature-icon"></i></div>
+                        <div class="feature-content">
+                            <h3>L'écologie qui rapporte</h3>
+                            <p>Remplacez votre 2ème voiture. Économisez environ 3000€/an (essence, assurance, parking) pour vos vacances.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION 4: PREUVE SOCIALE & CONFIANCE -->
+    <section class="trust-section" id="section_trust">
+        <div class="container">
+            <div class="section-header">
+                <h2>15 000 Familles conquises</h2>
+                <p>Ils ont troqué la voiture pour le vélo cargo. Ils ne reviendraient en arrière pour rien au monde.</p>
+            </div>
+
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="quote">"Je culpabilisais de prendre la voiture pour 3km. Maintenant, le trajet école est devenu un jeu. Les enfants se battent pour monter dessus !"</p>
+                    <div class="author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info"><strong>Camille D.</strong><span>Maman de jumeaux (Bordeaux)</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="quote">"Fini le stress du stationnement en centre-ville. Je gagne 20 min chaque matin. Le vélo est robuste, je me sens en sécurité."</p>
+                    <div class="author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info"><strong>Julien M.</strong><span>Papa de Léo, 5 ans (Paris)</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="quote">"On a vendu la deuxième voiture. Avec les économies, on s'est payé une semaine de vacances en plus. Le calcul est vite fait."</p>
+                    <div class="author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info"><strong>Sarah & Tom</strong><span>Parents écolos (Nantes)</span></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="trust-badges">
+                <div class="badge-item">
+                    <i class="fas fa-store-alt"></i>
+                    <h5>Réseau Decathlon</h5>
+                    <p>Entretien dans 350 magasins</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h5>Garantie Cadre à Vie</h5>
+                    <p>Solidité certifiée</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-battery-full"></i>
+                    <h5>Batterie Samsung</h5>
+                    <p>Garantie 2 ans / 500 cycles</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <h5>Paiement en 10x</h5>
+                    <p>Pour lisser le budget</p>
+                </div>
+            </div>
+
+
+            <div class="faq-section">
+                <div class="section-header" style="margin-bottom: 30px; text-align: left;">
+                    <h2 style="font-size: 1.6rem;">Questions de parents</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Est-ce difficile à conduire avec 2 enfants ?</h4>
+                        <p>Non ! Contrairement à un vélo classique avec siège porte-bébé haut, ici le poids est bas. L'équilibre est naturel dès les premiers tours de roue.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Et quand il pleut ?</h4>
+                        <p>Nous proposons une "Rain Cover" (tente de pluie) intégrale qui garde les enfants totalement au sec et au chaud, même sous l'averse.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Le vélo rentre-t-il chez moi ?</h4>
+                        <p>Il mesure 2m20 (la taille d'un vélo classique + 20cm). Il passe les portes standards. Si vous avez un ascenseur, il faut le mettre à la verticale (possible !).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Où le faire réparer ?</h4>
+                        <p>Dans n'importe quel Decathlon. Pas besoin d'aller chez un spécialiste pointu à l'autre bout de la ville.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>BTWIN</h4>
+                    <p>Rendre la ville plus respirable, une famille à la fois.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>LIENS UTILES</h4>
+                    <ul>
+                        <li><a href="#">Configurer mon vélo</a></li>
+                        <li><a href="#">Trouver un magasin</a></li>
+                        <li><a href="#">Guide des tailles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>AIDE</h4>
+                    <ul>
+                        <li><a href="#">FAQ Familles</a></li>
+                        <li><a href="#">Assurance Vol</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p>&copy; 2026 Decathlon. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPT CARROUSEL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                    resetTimer();
+                });
+                dotsContainer.appendChild(dot);
+            });
+            const dots = Array.from(dotsContainer.children);
+
+
+            function updateCarousel() {
+                track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentIndex].classList.add('active');
+            }
+            function nextSlide() { currentIndex = (currentIndex + 1) % slideCount; updateCarousel(); }
+            function prevSlide() { currentIndex = (currentIndex - 1 + slideCount) % slideCount; updateCarousel(); }
+
+
+            nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
+            prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
+
+
+            let timer = setInterval(nextSlide, 5000);
+            function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 5000); }
+        });
+    </script>
+</body>
+</html>
